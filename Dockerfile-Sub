@@ -1,0 +1,13 @@
+FROM python:3.8-slim
+WORKDIR /usr/src/app
+RUN pip install google-cloud-pubsub==2.3.0
+COPY . .
+
+# 指定憑證的路徑
+ENV GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/sa.json
+
+# 用 --build-arg 帶入 GCP Project ID
+ARG GCP_PROJECT_ID
+ENV GCP_PROJECT_ID=${GCP_PROJECT_ID:-supple-student-304807}
+
+CMD ["python", "-i", "./sub.py"]

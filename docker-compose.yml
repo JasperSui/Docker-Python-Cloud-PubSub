@@ -1,0 +1,32 @@
+version: '2'
+services:
+
+  # Suber 1
+  suber-1:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Sub
+
+      # 如果你要用自己的 Google Cloud Project 的話，這邊 ID 要換
+      args:
+        GCP_PROJECT_ID: supple-student-304807
+  
+  # Suber 2
+  suber-2:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Sub
+      args:
+        GCP_PROJECT_ID: supple-student-304807
+
+  # Puber
+  puber:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Pub
+
+      args:
+        GCP_PROJECT_ID: supple-student-304807
