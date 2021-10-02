@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 RUN pip install google-cloud-pubsub==2.3.0
 COPY . .
 
-# 指定憑證的路徑
+# 指定憑證的路徑 
 ENV GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/sa.json
 
 # 用 --build-arg 帶入 GCP Project ID
